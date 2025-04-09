@@ -1,0 +1,23 @@
+
+CREATE TABLE ADMIN.CUSTOMER(
+    id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    dni CHAR(8),
+    firstname VARCHAR2(100),
+    lastname VARCHAR2(100),
+    state CHAR(1)
+);
+
+SET LINESIZE 200;
+SET PAGESIZE 50;
+COLUMN dni FORMAT A10;
+COLUMN firstname FORMAT A20;
+COLUMN lastname FORMAT A20;
+COLUMN state FORMAT A5;
+
+INSERT INTO  ADMIN.CUSTOMER (dni, firstname, lastname, state) VALUES ('12345678', 'Juan', 'Perez', 'A');
+
+SELECT * FROM ADMIN.CUSTOMER;
+COMMIT;
+
+
+python -m venv SistemaPreguntas
