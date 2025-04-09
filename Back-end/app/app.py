@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from database import SQLALCHEMY_DATABASE_URI
 from sqlalchemy import text
+from sqlalchemy import Sequence
 
 app = Flask(__name__)
 CORS(app)  # Permite peticiones desde React
@@ -16,7 +17,7 @@ db = SQLAlchemy(app)
 # Definir el modelo de la base de datos
 class Producto(db.Model):
     __tablename__ = 'productos'
-    id = db.Column(db.Integer, primary_key=True)  # Oracle lo maneja con trigger y secuencia
+    id = db.Column(db.Integer, Sequence('secuencias_productos'), primary_key=True)  # Oracle lo maneja con trigger y secuencia
     nombre = db.Column(db.String(100), nullable=False)
     precio = db.Column(db.Float, nullable=False)
 
